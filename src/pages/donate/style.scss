@@ -1,0 +1,191 @@
+@import "../../mixins.scss";
+
+.donate {
+  position: relative;
+  padding-top: 100px;
+  min-height: 10px;
+  margin-bottom: 40px;
+  // margin-top: 60px;
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: none;
+    background-color: black;
+    z-index: 5;
+    &.active {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: rgba(0, 0, 0, 0.25);
+      backdrop-filter: blur(3.5px);
+      -webkit-backdrop-filter: blur(3.5px);
+      .box {
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+        width: 95%;
+        max-width: 400px;
+        height: 70%;
+        min-height: 150px;
+        max-height: 420px;
+        background-color: white;
+
+        &.showError {
+          min-height: 90px;
+          max-height: 100px;
+          background-color: rgba(0, 0, 0, 0.25);
+          .closeBtn {
+            color: white;
+          }
+        }
+
+        .closeBtn {
+          display: flex;
+          text-align: end;
+          justify-content: flex-end;
+          align-items: center;
+          font-size: 16px;
+          margin-bottom: 10px;
+          &:hover {
+            cursor: pointer;
+          }
+        }
+        .qrSection {
+          display: none;
+          &.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            .qrcode {
+              width: 300px;
+              border-radius: 12px;
+              img {
+                object-fit: fill;
+                object-position: center;
+                width: 100%;
+                height: 100%;
+              }
+            }
+          }
+        }
+        .error {
+          display: none;
+          &.active {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            height: 78%;
+            font-size: 20px;
+            font-weight: 500;
+            color: red;
+          }
+        }
+      }
+    }
+  }
+
+  .donateSection {
+    position: relative;
+    display: flex;
+    gap: 20px;
+    justify-content: space-evenly;
+    align-items: center;
+    .donateItem {
+      display: flex;
+      flex-direction: column;
+      color: white;
+      position: relative;
+      margin-bottom: 20px;
+      width: 200px;
+      .donateImage {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        // background-size: cover;
+        // background-position: center;
+        margin-bottom: 10px;
+        // display: flex;
+        // align-items: flex-end;
+        // justify-content: space-between;
+        padding: 10px;
+        .lazy-load-image-background {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          border-radius: 12px;
+          overflow: hidden;
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+          }
+        }
+      }
+      .textSection {
+        display: flex;
+        color: white;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        justify-content: center;
+        .donateTitle {
+          text-align: center;
+          justify-content: center;
+          align-items: center;
+          font-size: 16px;
+          line-height: 24px;
+          @include ellipsis(1);
+          @include md {
+            font-size: 20px;
+          }
+        }
+        .amount {
+          text-align: center;
+          font-size: 16px;
+          opacity: 0.5;
+          margin-bottom: 10px;
+        }
+        .quantity {
+          margin-bottom: 10px;
+          input {
+            margin: 0 5px;
+            font-size: 14px;
+            height: 20px;
+            width: 40px;
+            color: white;
+            text-align: center;
+            background-color: transparent;
+          }
+          .btn {
+            cursor: pointer;
+          }
+        }
+        .donateBtn {
+          width: 50px;
+          height: 30px;
+          line-height: 30px;
+          text-align: center;
+          background: var(--gradient);
+          outline: 0;
+          border: 0;
+          border-radius: 30px;
+          font-size: 16px;
+          cursor: pointer;
+          @include md {
+            width: 100px;
+            height: 30px;
+            font-size: 18px;
+          }
+        }
+      }
+    }
+  }
+}
